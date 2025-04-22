@@ -199,7 +199,7 @@ SELECT
     movies.rating, 
     studios.name
 FROM movies
-JOIN studios ON movies.studio_id = studios.id;
+INNER JOIN studios ON movies.studio_id = studios.id;
 
 
 -- Prints a header for the cast output
@@ -216,5 +216,5 @@ SELECT
     actors.name, 
     roles.character
 FROM roles
-JOIN movies ON roles.movie_id = movies.id
-JOIN actors ON roles.actor_id = actors.id;
+INNER JOIN movies ON roles.movie_id = movies.id
+INNER JOIN actors ON roles.actor_id = actors.id;
