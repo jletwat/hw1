@@ -112,13 +112,51 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS roles;
+
 
 -- Create new tables, according to your domain model
 -- TODO!
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    year INTEGER,
+    rating TEXT,
+    studio TEXT
+)
+
+CREATE TABLE roles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title_id INTEGER,
+    actor TEXT,
+    character TEXT
+)
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+INSERT INTO movies (title, year, rating, studio) VALUES
+("Batman Begins", 2005, "PG-13", "Warner Bros."),
+("The Dark Knight", 2008, "PG-13", "Warner Bros."),
+("The Dark Knight Rises", 2012, "PG-13", "Warner Bros.");
+
+INSERT INTO roles (title_id, actor, character) VALUES
+("Batman Begins","Christian Bale","Bruce Wayne"),
+("Batman Begins","Michael Caine","Alfred"),
+("Batman Begins","Liam Neeson","Ra's Al Ghul"),
+("Batman Begins","Katie Holmes","Rachel Dawes"),
+("Batman Begins","Gary Oldman","Commissioner Gordon"),
+("The Dark Knight","Christian Bale","Bruce Wayne"),
+("The Dark Knight","Heath Ledger","Joker"),
+("The Dark Knight","Aaron Eckhart","Harvey Dent"),
+("The Dark Knight","Michael Caine","Alfred"),
+("The Dark Knight","Maggie Gyllenhaal","Rachel Dawes"),
+("The Dark Knight Rises","Christian Bale","Bruce Wayne"),
+("The Dark Knight Rises","Gary Oldman","Commissioner Gordon"),
+("The Dark Knight Rises","Tom Hardy","Bane"),
+("The Dark Knight Rises","Joseph Gordon-Levitt","John Blake"),
+("The Dark Knight Rises","Anne Hathaway","Selina Kyle");
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -127,6 +165,8 @@
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT title, year, rating, studio
+FROM movies;
 
 -- Prints a header for the cast output
 .print ""
@@ -137,3 +177,5 @@
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT title_id, actor, character
+FROM roles;
